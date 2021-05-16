@@ -307,7 +307,10 @@ class Bot(
      * Load last updated id after fail.
      */
     private fun loadLastHandledUpdateId() {
-        updateId = Integer.parseInt(File(filePathToUpdateId).readText())
+        val file  = File(filePathToUpdateId)
+        if (file.exists()) {
+            updateId = Integer.parseInt(file.readText())
+        }
     }
 
     /**
